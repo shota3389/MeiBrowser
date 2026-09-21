@@ -24,11 +24,22 @@
 所有涉及界面文字的字符串都被抽取到 `GUI/Localization.cs` 的两张表中，
 通过 XAML 标记扩展 `{loc:Loc Key}` 与 C# 的 `Localization.T("Key")` 取值。
 
+## 关于 AI 的使用
+
+**本分支的中文本地化工作是在 AI 辅助下完成的。**
+
+- AI 参与的范围：界面文案的翻译与整理、`Localization.cs` 对照表、
+  18 个 XAML / C# 文件的改造接线，以及 README / NOTICE 文档的撰写。
+- AI **未参与**的部分：上游 MeiBrowser 的全部原始代码 —— 一行未改。
+  下载逻辑、Sophon / Dispatch 协议、校验算法**完全保持上游原样**。
+- 产出均经过编译验证（0 个错误）与维护者复核，但译文**未经母语者逐条校对**，
+  不保证绝对无误；发现问题欢迎提 issue 或 PR。
+
 ## 版权
 
 - 原始代码版权归 **Escartem** 所有（见 `GUI/GUI.csproj` 中的
   `<Copyright>Copyright (c) 2025-2026 Escartem</Copyright>`）
-- 本地化部分的工作由本分支维护者完成
+- 本地化部分的工作由本分支维护者完成（其中译文与代码为 AI 辅助产出，见上文）
 
 ## 关于许可证
 
