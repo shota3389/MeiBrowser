@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	  <AssemblyName>MeiBrowser</AssemblyName>
+	  <Copyright>Copyright (c) 2025-2026 Escartem</Copyright>
+	  <Authors>Escartem</Authors>
+	  <ApplicationIcon>icons\logo.ico</ApplicationIcon>
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <Version>2.0.0</Version>
+    <FileVersion>2.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icons\custom.png" />
+    <None Remove="icons\file.png" />
+    <None Remove="icons\file2.png" />
+    <None Remove="icons\folder.png" />
+    <None Remove="icons\hk4e.png" />
+    <None Remove="icons\hkrpg.png" />
+    <None Remove="icons\nap.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icons\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DarkNet" Version="2.3.0" />
+    <PackageReference Include="Dirkster.AvalonDock" Version="5.0.0" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\custom.png" />
+    <Resource Include="icons\file.png" />
+    <Resource Include="icons\file2.png" />
+    <Resource Include="icons\folder.png" />
+    <Resource Include="icons\hk4e.png" />
+    <Resource Include="icons\hkrpg.png" />
+    <Resource Include="icons\nap.png" />
+  </ItemGroup>
+
+</Project>
