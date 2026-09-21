@@ -194,9 +194,13 @@ GUI/bin/Release/net10.0-windows/MeiBrowser.dll
 
 直接运行 `GUI/bin/Release/net10.0-windows/MeiBrowser.exe`。
 
-> 编译时会出现约 107 条 `CS8600/CS8601/CS8602/CS8604/CS8619` 可空性警告，
+> 编译时会产生 `CS8600/CS8601/CS8602/CS8604/CS8619` 可空性警告，
 > 集中在 `Core/Sophon.cs`、`Core/Dispatch.cs`、`Core/Meta.cs`。
-> **这些是上游原有的，与本分支的本地化改动无关**，不影响生成。
+> **这些均为上游原有代码所致，不影响生成，也不影响运行。**
+>
+> 经与上游同源对照编译，本分支的警告站点数为 **69 个，与上游逐站点一一对应**
+> （仅有因新增行导致的**行号偏移**，例如 `MainWindow.xaml.cs` 从第 19 行变为第 20 行）。
+> 也就是说，**本分支没有引入任何新的编译警告**。
 > 本次改动已通过编译器验证：**0 个错误**。
 
 可能需要留意的元数据（在 `GUI/GUI.csproj` 里）：
@@ -360,7 +364,7 @@ git merge upstream/master
    `[Oo]bj/`、`.vs/`、`*.user`、`*.log`、`[Dd]ebug/`、`[Rr]elease/` 等。
 
 已实测：把 `bin`/`obj`/`dist`/日志/`settings.json`/`*.bak`/`*_wpftmp.csproj`
-等 14 类垃圾文件造出来，`git status` 仍只显示 **58 个**待提交文件，无一条漏网。
+等 14 类垃圾文件造出来，`git status` 仍只显示源码级条目（**59 个**），无一条漏网。
 
 > 注意 `.gitignore` 的规则**不能被后面的规则「取消」**（除了用 `!` 前缀显式反向包含）。
 > 所以新增忽略项请加在文件顶部，和现有分组放在一起。
@@ -394,15 +398,16 @@ Release 说明里请注明**依赖 .NET 10 Desktop Runtime**（该配置非自�
 
 | 项目 | 结果 |
 |---|---|
-| 源码文件数 | 57 个（与上游应纳入版本控制的文件集完全一致） |
+| 源码文件数 | **59 个**（`git ls-files` 实测；上游同口径为 56 个，本分支新增 3 个：`GUI/Localization.cs`、`NOTICE.md`、`.gitattributes`） |
 | 是否含 `.git` / `bin` / `obj` | 否，均已排除 |
 | 独立编译 | `dotnet build MeiBrowser.sln` → **已成功生成，0 个错误** |
+| 编译警告 | 69 个警告站点，**与上游逐站点一一对应**（含行号偏移），无本分支引入的新警告 |
 | 两语言表 key 一致性 | 各 134 个 key，**零漂移** |
 | XAML + C# 引用的 key | 全部已定义，**无裸 key** |
 | 运行期启动链路 | 已用探针验证 `OnStartup → Validate → Load → Initialize → 窗口 Loaded` 全流程无异常 |
 | 与上游的同步状态 | fork 基线 `e65e3a7` 即上游 master 当前 tip（2026-09-09），无落后 |
 | 上游许可证状态 | 已核查 GitHub：**无 LICENSE 文件**（详见 NOTICE） |
-| `.gitignore` 有效性 | 造 14 类垃圾文件实测，`git status` 仍只显示 58 个待提交文件 |
+| `.gitignore` 有效性 | 造 14 类垃圾文件实测，`git status` 仍只显示源码级条目，无一条漏网 |
 
 ---
 

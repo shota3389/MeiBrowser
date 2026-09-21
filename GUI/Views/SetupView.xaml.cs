@@ -288,8 +288,10 @@ namespace GUI.Views
                 if (selectedMode == "Sophon")
                 {
                     var password = currentPassword;
-                    if (preDownloadPassword != null && selectedVersion!.EndsWith(" (pre-download)"))
+                    if (selectedVersion!.EndsWith(" (pre-download)") && preDownloadPassword != null)
+                    {
                         password = preDownloadPassword;
+                    }
 
                     // The list is already ordered newest first locally, no need to sort on the server
                     var packages = selectedGame == "custom"
